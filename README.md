@@ -21,9 +21,9 @@ Signed : `int128`
 
 #### Operators 
 
-*Comparison*: `<, >, <=, >=, ==, !=`
-*Arithmetic*: `+, -, unary -, *, /, **, %, min(), max()`
-*Bitwise*: `bitwise_and(), bitwise_not(), bitwise_or(), bitwise_xor(), shift()`
+- *Comparison*: `<, >, <=, >=, ==, !=`
+- *Arithmetic*: `+, -, unary -, *, /, **, %, min(), max()`
+- *Bitwise*: `bitwise_and(), bitwise_not(), bitwise_or(), bitwise_xor(), shift()`
 
 > In `shift(a, _shift)` _shift must be of the type int128, where positive _shift means a left shift and negative _shift means a right shift.
 
@@ -34,8 +34,8 @@ Signed : `int128`
 
 #### Operators 
 
-*Comparison*: `<, >, <=, >=, ==, !=`
-*Arithmetic*: `+, -, unary -, *, /, **, %`
+- *Comparison*: `<, >, <=, >=, ==, !=`
+- *Arithmetic*: `+, -, unary -, *, /, **, %`
 
 
 ### Address
@@ -44,13 +44,14 @@ Signed : `int128`
 
 #### Members
 
-`balance`: Get balance of the address in `wei_value`.
-`codesize`: Get code stored at this address. Returns `int128`.
+- `balance`: Get balance of the address in `wei_value`.
+- `codesize`: Get code stored at this address. Returns `int128`.
 
 
 ### Time
 
 `timestamp`: Holds the time
+
 `timedelta`: Time difference
 
 > Two `timedelta` or a `timedelta` and a `timestamp` can be added together . It is not possible to add two `timestamp` values.
@@ -70,7 +71,7 @@ Signed : `int128`
 
 User defined data type.
 
-```
+```python
 <struct_name>: {
     <value>: <data_type>,
     <value>: <data_type>,
@@ -82,7 +83,7 @@ User defined data type.
 
 Mappings are similar to hash tables.
 
-```
+```python
 <mapping_name>: <value_type>[<key_type>]
 ```
 
