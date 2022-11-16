@@ -123,3 +123,9 @@ def __init__(_a: address, _b: bool):
   self.a = _a;
   self.b = _b
 ```
+
+
+### Documentation
+[Official Docs](https://vyper.readthedocs.io/en/stable/)
+[Vyper Examples](https://www.vyperexamples.com/)
+[Learn Vyper](https://learn.vyperlang.org/#/)
