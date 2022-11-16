@@ -147,6 +147,12 @@ List of all types and default values:
   int128        | 1
   uint256       | 1
 
+### TODO
+ - Interface
+ - Events
+ - Assert
+ - @external, @internal, @view, ...
+
 ### Documentation
 - [Official Docs](https://vyper.readthedocs.io/en/stable/)
 - [Vyper Examples](https://www.vyperexamples.com/)
