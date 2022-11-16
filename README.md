@@ -1,3 +1,4 @@
+
 # vyper-cheatsheet
 
 ### Motivation
@@ -28,7 +29,7 @@ Signed : `int128`
 > In `shift(a, _shift)` _shift must be of the type int128, where positive _shift means a left shift and negative _shift means a right shift.
 
 
-### Decimels
+### Decimals
 
 `decimal`: Holds a decimal fixed point value.
 
@@ -62,7 +63,7 @@ Signed : `int128`
 
 ### Boolean
 
-`bool`: true or false
+`bool`: True or False
 
 **Operators**: not, and, or, ==, !=
 
@@ -78,18 +79,33 @@ User defined data type.
     ...
 }
 ```
+### Arrays
+#### Array with a fixed size 
+```python
+<array_name>: <type_name>[<max_length>]
+```
+
+#### Dynamic Array
+A dynamic array with a maximum length
+```python
+<array_name>: DynArray[<type_name>, <max_length>]
+```
 
 ### Mappings
-
 Mappings are similar to hash tables.
 
 ```python
-<mapping_name>: <value_type>[<key_type>]
+<mapping_name>: HashMap[<key_type>,<value_type>]
+```
+#### Nested Mappings:
+```python
+<mapping_name>: HashMap[<key_type>, HashMap[<key_type>, <value_type>]]
+
 ```
 
 ## Functions
 
-### Structure
+### Basic Structure 
 
 ```
 def <function_name>(<param_name>: <param_type>, ...) -> <return_type>:
@@ -102,6 +118,7 @@ def <function_name>(<param_name>: <param_type>, ...) -> <return_type>:
 Function which is called during contract creation
 
 ```python
+@external
 def __init__(_a: address, _b: bool):
   self.a = _a;
   self.b = _b
