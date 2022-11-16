@@ -124,8 +124,30 @@ def __init__(_a: address, _b: bool):
   self.b = _b
 ```
 
+### Empty function
+Empty is a built-in Vyper function which returns a default value of the type(typename) passed as a parameter.
+```python
+
+empty(<value_type>) --> Any
+```
+Example:
+```python
+@external
+def someFunction():
+   name: String[32] = empty(String[32])
+```
+List of all types and default values:
+
+  Type          | Default Value 
+  ------------- | -------------   
+  address       | 0x0000000000000000000000000000000000000000 
+  bool          | False  
+  bytes32       | 0x0000000000000000000000000000000000000000000000000000000000000000
+  decimal       | 0.0
+  int128        | 1
+  uint256       | 1
 
 ### Documentation
-[Official Docs](https://vyper.readthedocs.io/en/stable/)
-[Vyper Examples](https://www.vyperexamples.com/)
-[Learn Vyper](https://learn.vyperlang.org/#/)
+- [Official Docs](https://vyper.readthedocs.io/en/stable/)
+- [Vyper Examples](https://www.vyperexamples.com/)
+- [Learn Vyper](https://learn.vyperlang.org/#/)
