@@ -1,3 +1,4 @@
+
 # vyper-cheatsheet
 
 ### Motivation
@@ -16,7 +17,6 @@ This guide is not intended to teach you Vyper from the ground up, but to help de
 ### Integer
 
 Unsigned : `uint256`
-
 Signed : `int128`
 
 #### Operators 
@@ -24,11 +24,12 @@ Signed : `int128`
 - *Comparison*: `<, >, <=, >=, ==, !=`
 - *Arithmetic*: `+, -, unary -, *, /, **, %, min(), max()`
 - *Bitwise*: `bitwise_and(), bitwise_not(), bitwise_or(), bitwise_xor(), shift()`
+- *Incremente and Decrement*: `i+=1 , i -=1`
 
 > In `shift(a, _shift)` _shift must be of the type int128, where positive _shift means a left shift and negative _shift means a right shift.
 
 
-### Decimels
+### Decimals
 
 `decimal`: Holds a decimal fixed point value.
 
@@ -62,7 +63,7 @@ Signed : `int128`
 
 ### Boolean
 
-`bool`: true or false
+`bool`: True or False
 
 **Operators**: not, and, or, ==, !=
 
@@ -78,18 +79,33 @@ User defined data type.
     ...
 }
 ```
+### Arrays
+#### Array with a fixed size 
+```python
+<array_name>: <type_name>[<max_length>]
+```
+
+#### Dynamic Array
+A dynamic array with a maximum length
+```python
+<array_name>: DynArray[<type_name>, <max_length>]
+```
 
 ### Mappings
-
 Mappings are similar to hash tables.
 
 ```python
-<mapping_name>: <value_type>[<key_type>]
+<mapping_name>: HashMap[<key_type>,<value_type>]
+```
+#### Nested Mappings:
+```python
+<mapping_name>: HashMap[<key_type>, HashMap[<key_type>, <value_type>]]
+
 ```
 
 ## Functions
 
-### Structure
+### Basic Structure 
 
 ```
 def <function_name>(<param_name>: <param_type>, ...) -> <return_type>:
@@ -102,7 +118,89 @@ def <function_name>(<param_name>: <param_type>, ...) -> <return_type>:
 Function which is called during contract creation
 
 ```python
+@external
 def __init__(_a: address, _b: bool):
   self.a = _a;
   self.b = _b
 ```
+
+### Empty function
+Empty is a built-in Vyper function which returns a default value of the type(typename) passed as a parameter.
+```python
+
+empty(<value_type>) --> Any
+```
+Example:
+```python
+@external
+def someFunction():
+   name: String[32] = empty(String[32])
+```
+List of all types and default values:
+
+  Type          | Default Value 
+  ------------- | -------------   
+  address       | 0x0000000000000000000000000000000000000000 
+  bool          | False  
+  bytes32       | 0x0000000000000000000000000000000000000000000000000000000000000000
+  decimal       | 0.0
+  int128        | 1
+  uint256       | 1
+
+### Interface
+```python
+interface <interface_name>:
+    def <name_function>(): nonpayable
+    def <name_function>(<value_tipe>): nonpayable
+```
+### Loops
+```python
+for i in range(<n>):
+    ...
+```
+### Conditions
+```python
+if a > 2:
+    ...
+elif a == 0:
+    ...
+else:
+    ...
+```
+
+
+### Events
+```python
+event <name_event>:
+    _from: indexed(address)
+    _id: indexed(bytes32)
+    _value: uint256
+```
+Send an event:
+```python
+log event <name_event>: (msg.sender, _id, msg.value)
+```
+### Assert
+```python
+assert x> y, "message when it's False"
+```
+
+### Block and transaction properties
+```python
+blockhash(blockNumber)
+block.coinbase
+block.difficulty
+block.number
+block.prevhash  # Same as blockhash(block.number - 1)
+block.timestamp
+msg.gas
+msg.sender
+msg.value
+tx.origin
+```
+
+
+### Documentation
+- [Official Docs](https://vyper.readthedocs.io/en/stable/)
+- [Vyper Examples](https://www.vyperexamples.com/)
+- [Learn Vyper](https://learn.vyperlang.org/#/)
