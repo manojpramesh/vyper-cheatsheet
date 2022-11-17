@@ -17,7 +17,6 @@ This guide is not intended to teach you Vyper from the ground up, but to help de
 ### Integer
 
 Unsigned : `uint256`
-
 Signed : `int128`
 
 #### Operators 
@@ -25,6 +24,7 @@ Signed : `int128`
 - *Comparison*: `<, >, <=, >=, ==, !=`
 - *Arithmetic*: `+, -, unary -, *, /, **, %, min(), max()`
 - *Bitwise*: `bitwise_and(), bitwise_not(), bitwise_or(), bitwise_xor(), shift()`
+- *Incremente and Decrement*: `i+=1 , i -=1`
 
 > In `shift(a, _shift)` _shift must be of the type int128, where positive _shift means a left shift and negative _shift means a right shift.
 
@@ -147,11 +147,58 @@ List of all types and default values:
   int128        | 1
   uint256       | 1
 
-### TODO
- - Interface
- - Events
- - Assert
- - @external, @internal, @view, ...
+### Interface
+```python
+interface <interface_name>:
+    def <name_function>(): nonpayable
+    def <name_function>(<value_tipe>): nonpayable
+```
+### Loops
+```python
+for i in range(<n>):
+    ...
+```
+### Conditions
+```python
+if a > 2:
+    ...
+elif a == 0:
+    ...
+else:
+    ...
+```
+
+
+### Events
+```python
+event <name_event>:
+    _from: indexed(address)
+    _id: indexed(bytes32)
+    _value: uint256
+```
+Send an event:
+```python
+log event <name_event>: (msg.sender, _id, msg.value)
+```
+### Assert
+```python
+assert x> y, "message when it's False"
+```
+
+### Block and transaction properties
+```python
+blockhash(blockNumber)
+block.coinbase
+block.difficulty
+block.number
+block.prevhash  # Same as blockhash(block.number - 1)
+block.timestamp
+msg.gas
+msg.sender
+msg.value
+tx.origin
+```
+
 
 ### Documentation
 - [Official Docs](https://vyper.readthedocs.io/en/stable/)
